@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Edit Product</title>
+</head>
+<body>
+    <form action="edit" method="POST">
+      <input type="hidden" name="id" value="{{products._id}}" >
+      <label class="lablel"><b>Product Name</b></label>
+      <input type="text" name="name" value="{{products.Name}}">
+      <br>
+      <label class="lablel"><b>Product Price</b></label>
+      <input type="text"onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="price" value="{{products.Price}}">
+      <br>
+      <label class="lablel"><b>Product Origin</b></label>
+      <input type="text" name="origin" value="{{products.Origin}}">
+      <br>
+      <label class="lablel"><b>Product quantity</b></label>
+      <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="quantity" value="{{products.Quantity}}">
+      <br>
+      <label class="lablel"><b>Product Description</b></label>
+      <input type="text" name="description" value="{{products.Description}}">
+      <br>
+      <input type="submit" value="Update">
+    </form>
+</body>
+</html>

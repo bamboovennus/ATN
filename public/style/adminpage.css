@@ -1,0 +1,45 @@
+#logout
+{
+  margin-left: 900px;
+  color: beige;
+  text-decoration: none;
+}
+#logout :hover{
+    color : red;
+    transition: 0.3s;
+}
+
+li a 
+{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+.container
+{
+  position: relative;
+  background-color: rgba(122, 100, 100, 0.5);
+  margin-left: 265px;
+  margin-top: 100px;
+  height: 550px;
+  width: 900px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+#menu{
+    text-decoration: none;
+    text-align: center;
+}
+#menu :hover{
+    color: brown;
+    transition: 0.3s;
+}
+h1
+{
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}

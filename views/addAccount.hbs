@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Account</title>
+</head>
+<body>
+    <form action="addAccount" method="POST">
+        <label class="label"><b> Name</b></label>
+        <input type="text" name="name" required>
+        <br>
+        <label class="label"><b>Email</b></label>
+        <input type="text" name="email" required>
+        <br>
+        <label class="label"><b>Phone Number</b></label>
+        <input type="text"onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="phone">
+        <br>
+        <label class="label"><b>Username</b></label>
+        <input type="text" name="username1" required>
+        <br>
+        <label class="label"><b>Password</b></label>
+        <input type="text" name="password" required>
+        <br>
+        <label class="label"><b>Role</b></label><br>
+        <input type="radio" name="role" value="staff">Employee
+        <input type="radio" name="role" value="admin">Administrator
+        <br>
+        <button type="submit" value="Add New">Add New</button>
+    </form>
+</body>
+</html>

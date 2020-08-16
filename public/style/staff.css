@@ -1,0 +1,38 @@
+#logout
+{
+  margin-left: 1100px;
+  color: beige;
+  text-decoration: none;
+}
+li a 
+{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+.container
+{
+  position: relative;
+  background-color:  rgba(122, 100, 100, 0.5);
+  margin-top: 50px;
+  border-radius: 20px;
+  height: 600px;
+}
+#searchbar
+{
+  margin-top: 10px;
+  margin-left: 300px;
+  height: 30px;
+  width: 450px;
+  border-bottom: 2px solid grey;
+  padding: 15px;
+  padding-left: 10px;
+  border-radius: 5px 5px 5px 5px;
+}
+#menu
+{
+  margin-left: 330px;
+  text-decoration: none;
+}
