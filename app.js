@@ -30,15 +30,6 @@ app.use('/',indexController);
 app.use('/staffProduct', homepageController);
 app.use ('/adminpage',adminController);
 
-const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb+srv://bamboo:123binh789@cluster0.f1nem.mongodb.net/StudentDB?retryWrites=true&w=majority";
-const client = new MongoClient(url, { useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("ATN").collection("Account");
-  // perform actions on the collection object
-  client.close();
-});
-
 const PORT = process.env.PORT || 5000;
 var server=app.listen(PORT);
 
