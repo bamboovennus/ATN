@@ -40,7 +40,6 @@ router.get('/accounts', async(req,res)=>
     let client= await MongoClient.connect(url);
     let dbo = client.db("ATN");
     let result = await dbo.collection("Account").find({}).toArray();
-    console.log(result);
     res.render('allAccounts', {accounts : result});
   }
 })

@@ -19,6 +19,7 @@ router.post('/doLogin', async(req,res)=>
 {
     let username = req.body.username;
     let password = req.body.password;
+    
 
     let client= await MongoClient.connect(url);
     let dbo = client.db("ATN");
@@ -31,7 +32,7 @@ router.post('/doLogin', async(req,res)=>
     else
         {
         if(results2 != 0)
-            {                    
+            {             
                 req.session.username = username; 
                 res.redirect("/adminpage");               
             }
