@@ -26,6 +26,9 @@ router.post('/doLogin', async(req,res)=>
     //     let accountEror = { passError:"invalid password"};
     //     res.render('index',{account:accountEror});
     // }
+    // req.session.username = {
+    //     user: username
+    // }
     let client= await MongoClient.connect(url);
     let dbo = client.db("ATN");
     let results = await dbo.collection("Account").find({Username:username, Password:password}).toArray();

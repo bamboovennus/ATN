@@ -15,7 +15,7 @@ router.get('/', async(req,res)=>
 {
   if(!req.session.username)
     {
-      res.status(400).send();
+       return res.redirect("/");
     }
   res.render('adminpage');
 })
@@ -28,12 +28,12 @@ router.get('/logout', function (req, res)
   res.redirect('/');
 });
 
-//********** Display all employee account
+//********** Display all  account
 router.get('/accounts', async(req,res)=>
 {
   if(!req.session.username)
   {
-    return res.status(401).send();
+    return res.redirect("/")
   }
   else 
   {
@@ -47,7 +47,7 @@ router.get('/addAccount',(req,res) =>{
     res.render('addAccount')
 })
 
-//********** Add new employee
+//********** Add new account
 router.post('/addAccount', async(req,res)=>
 {
   let name = req.body.name;
@@ -57,25 +57,28 @@ router.post('/addAccount', async(req,res)=>
   let password = req.body.password;
   let role = req.body.role;
   let newAccount = {Name: name, Email: email, Phone: phone, Username: username, Password: password, Role: role};
-    
+    // if(isNaN(phone)) {
+    //     let phoneEror = {phoneError: "Must enter the number!"};
+    //     res.render('addAccount',{phone : phoneEror});
+    // } 
+    // if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) == false){
+    //   let emailEror = {emailError: "Invalid email!"};
+    //        res.render('addAccount',{email : emailEror});
+    // }
+  
   let client= await MongoClient.connect(url);
   let dbo = client.db("ATN");
-  dbo.collection("Account").insertOne(newAccount,(err,res)=>
-    {
-      if (err) throw err;
-      console.log("Add successfully");
-      client.close();
-    })
-
+  dbo.collection("Account").insertOne(newAccount);
   res.redirect('/adminpage/accounts');
 })
 
-//********** Edit employee page
+//********** Edit account
 router.get('/account/edit', async(req,res)=>
 {
   if(!req.session.username)
   {
-    return res.status(401).send();
+  
+    return res.redirect("/");
   }
   else 
   {
@@ -88,7 +91,7 @@ router.get('/account/edit', async(req,res)=>
     res.render('editAccounts',{accounts:result});
 }})
 
-//********** Edit and render to all employee page
+//**********  render edit account
 router.post('/account/doEdit', async(req,res)=>
 {
   let id = req.body.id;
@@ -114,7 +117,7 @@ router.get('/account/delete', async(req,res)=>
 {
   if(!req.session.username)
   {
-    return res.status(401).send();
+    return res.redirect("/");
   }
   else 
   {
@@ -129,7 +132,6 @@ router.get('/account/delete', async(req,res)=>
 }})
 
 //********** Search account
-
 router.post('/allAccounts/search', async(req,res)=>
 {
   var key = req.body.key;
@@ -144,7 +146,7 @@ router.get('/products', async(req,res)=>
 {
   if(!req.session.username)
   {
-    return res.status(401).send();
+    return res.redirect("/");
   }
   else 
   {
@@ -180,7 +182,7 @@ router.get('/product/edit', async(req,res)=>
 {
   if(!req.session.username)
   {
-    return res.status(401).send();
+    return res.redirect("/");
   }
   else 
   {
@@ -194,7 +196,7 @@ router.get('/product/edit', async(req,res)=>
   }
 });
 
-//********** Confirm edit and render to all product page
+//**********  render edit product
 router.post('/product/edit', async(req,res)=>
 {
   let id = req.body.id;
@@ -215,12 +217,12 @@ router.post('/product/edit', async(req,res)=>
 })
 
 
-//********** Delete product page
+//********** Delete product 
 router.get('/product/delete', async(req,res)=>
 {
   if(!req.session.username)
   {
-    return res.status(401).send();
+    return res.redirect("/");
   }
   else 
   {

@@ -13,13 +13,14 @@ router.get('/', async(req,res)=>
 {
   if(!req.session.username)
     {
-      return res.status(401).send();
+      return res.redirect("/");
     }
   else
     {
       let client= await MongoClient.connect(url);
       let dbo = client.db("ATN");
       let results = await dbo.collection("Product").find({}).toArray();
+      console.log(req.session.username);
       res.render('staffProduct',{products:results});
     }
 })
@@ -35,7 +36,7 @@ router.get('/edit', async(req,res)=>
 {
   if(!req.session.username)
   {
-    return res.status(401).send();
+    return res.redirect("/");
   }
   else 
   {
@@ -53,7 +54,7 @@ router.post('/doEdit', async(req,res)=>
 {
   if(!req.session.username)
   {
-    return res.status(401).send();
+    return res.redirect("/");
   }
   else
   {
@@ -81,7 +82,7 @@ router.get('/delete', async(req,res)=>
 {
   if(!req.session.username)
   {
-    return res.status(401).send();
+    return res.redirect("/");
   }
   else 
   {
