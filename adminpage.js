@@ -244,7 +244,7 @@ router.post('/products/search', async(req,res)=>
   var key = req.body.key;
   let client= await MongoClient.connect(url);
   let dbo = client.db("ATN");
-  let results = await dbo.collection("Product").find({Name : key}).toArray();
+  let results = await dbo.collection("Product").find({Name : new RegExp(key,'i')}).toArray();
 
   res.render("allProducts",{products:results})
 })
