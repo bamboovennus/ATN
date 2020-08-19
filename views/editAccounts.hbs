@@ -20,7 +20,7 @@
        <input type="text" name ="email" value="{{accounts.Email}}">
        <br>
        <label class="label"><b>Phone Number</b></label><br>
-       <input type="text" name ="phone" value="{{accounts.Phone}}">
+       <input type="text" name ="phone" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="{{accounts.Phone}}">
        <br>
        <label class="label"><b>Username</b></label><br>
        <input type="text" name ="username" value="{{accounts.Username}}">
@@ -29,8 +29,8 @@
        <input type="text" name ="password" value="{{accounts.Password}}">
        <br>
        <label class="label"><b>Role</b></label><br>
-       <input type="radio" name ="role" value="admin">Administrator
-       <input type="radio" name ="role" value="staff">Employee
+       <input type="radio" name ="role" value="admin" required/>Administrator
+       <input type="radio" name ="role" value="staff" required/>Employee
        <br>
         <input type="submit" value="Update">
     </form>

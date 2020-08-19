@@ -12,22 +12,21 @@
         <br>
         <label class="label"><b>Email</b></label>
         <input type="text" name="email" required>
-    {{!-- <label for="" style="color:red;">{{email.emailError}}</label>     --}}
+    <label for="" style="color:red;">{{email.emailError}}</label>    
         <br>
         <label class="label"><b>Phone Number</b></label>
         <input type="text" name="phone">
-     {{!-- <label for="" style="color:red;">{{phone.phoneError}}</label>  --}}
- 
+    <label for="" style="color:red;">{{phone.phoneError}}</label> 
         <br>
         <label class="label"><b>Username</b></label>
-        <input type="text" name="username1" required>
+        <input type="text" name="username" required>
         <br>
         <label class="label"><b>Password</b></label>
         <input type="text" name="password" required>
         <br>
         <label class="label"><b>Role</b></label><br>
-        <input type="radio" name="role" value="staff">Employee
-        <input type="radio" name="role" value="admin">Administrator
+        <input type="radio" name="role" value="staff" required/>Employee
+        <input type="radio" name="role" value="admin" required/>Administrator
         <br>
         <button type="submit" value="Add New">Add New</button>
     </form>

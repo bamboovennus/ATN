@@ -19,13 +19,13 @@ router.post('/doLogin', async(req,res)=>
 {
     let username = req.body.username;
     let password = req.body.password;
-    // if(username.trim().length == 0) {
-    //     let accountEror = {userError: "Must enter the username!"};
-    //     res.render('index',{account:accountEror});
-    // } else if(password.trim().length == 0){
-    //     let accountEror = { passError:"invalid password"};
-    //     res.render('index',{account:accountEror});
-    // }
+    if(username.trim().length == 0) {
+        let accountEror = {userError: "Must enter the username!"};
+        res.render('index',{account:accountEror});
+    } else if(password.trim().length == 0){
+        let accountEror = { passError:"invalid password"};
+        res.render('index',{account:accountEror});
+    }
     // req.session.username = {
     //     user: username
     // }

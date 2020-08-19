@@ -51,13 +51,12 @@
                 <td>{{Password}}</td>
                 <td>{{Name}}</td>
                 <td>{{Email}}</td>
-                <td>
-                    {{#if Phone}}
+                <td> {{#if Phone}}
                     {{Phone}}
                     {{else}}
-                    <span style="color:red">Not Available</span>
+                    <span style="color: red;">Not Available</span> 
                     {{/if}}
-                    </td>
+                </td>
                 <td>{{Role}}</td>
                 <td><a href="/adminpage/account/edit?id={{_id}}">Update</a></td>
                 <td><a href="/adminpage/account/delete?id={{_id}}">Delete</a></td>

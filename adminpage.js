@@ -56,20 +56,21 @@ router.post('/addAccount', async(req,res)=>
   let username = req.body.username;
   let password = req.body.password;
   let role = req.body.role;
-  let newAccount = {Name: name, Email: email, Phone: phone, Username: username, Password: password, Role: role};
-    // if(isNaN(phone)) {
-    //     let phoneEror = {phoneError: "Must enter the number!"};
-    //     res.render('addAccount',{phone : phoneEror});
-    // } 
-    // if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) == false){
-    //   let emailEror = {emailError: "Invalid email!"};
-    //        res.render('addAccount',{email : emailEror});
-    // }
-  
+    if(isNaN(phone)) {
+        let phoneEror = {phoneError: "Must enter only number!"};
+        res.render('addAccount',{phone : phoneEror});
+    } 
+     else if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) == false){
+      let emailEror = {emailError: "Invalid email!"};
+           res.render('addAccount',{email : emailEror});
+    }
+    else{
+  let newAccount = {Name: name, Email: email, Phone: phone, Username: username, Password: password, Role: role};  
   let client= await MongoClient.connect(url);
   let dbo = client.db("ATN");
   dbo.collection("Account").insertOne(newAccount);
   res.redirect('/adminpage/accounts');
+    }
 })
 
 //********** Edit account
@@ -102,13 +103,13 @@ router.post('/account/doEdit', async(req,res)=>
   let password = req.body.password;
   let role = req.body.role;
   let newAccount = {$set:{Name: name, Email: email, Phone: phone, Username: username, Password: password, Role: role}}
-    
   var ObjectID = require('mongodb').ObjectID;
   let condition = {_id: ObjectID(id)};
   let client= await MongoClient.connect(url);
   let dbo = client.db("ATN");
   await dbo.collection("Account").updateOne(condition,newAccount);
 
+  
   res.redirect('/adminpage/accounts');
 })
 
