@@ -169,13 +169,17 @@ router.post('/addProduct', async(req,res)=>
   let origin = req.body.origin;
   let quantity = req.body.quantity;
   let description = req.body.description;
-
+  if(quantity < 0){
+    let quantityEror = {quantityError: "Enter more than 0 value!"};
+        res.render('addProduct',{quantity : quantityEror});
+  } else {
   let newProduct= {Name: name, Price: price, Origin: origin, Quantity : quantity ,Description: description};   
   let client= await MongoClient.connect(url);
   let dbo = client.db("ATN");
   dbo.collection("Product").insertOne(newProduct);
 
   res.redirect('/adminpage/products');
+  }
 })
 
 //********** Edit product

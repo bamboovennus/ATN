@@ -17,7 +17,8 @@
         <input type="text" name="origin">
         <br>
         <label class="label"><b>Product Quantity</b></label>
-        <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="quantity">
+        <label for="" style="color:red;">{{quantity.quantityError}}</label> 
+        <input type="text" name="quantity">
         <br>
         <label class="label"><b>Product Description</b></label>
         <input type="text" name="description">
